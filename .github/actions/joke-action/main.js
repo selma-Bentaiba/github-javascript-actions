@@ -1,14 +1,10 @@
-const axios = require('axios');
+const getJoke = require("./joke");
+const core = require("@actions/core");
 
-async function getJoke() {
-  try {
-    const response = await axios.get('https://official-joke-api.appspot.com/jokes/random');
-    console.log(response.data.setup);
-    console.log(response.data.punchline);
-  } catch (error) {
-    console.error('Error fetching joke:', error);
-  }
+async function run() {
+  const joke = await getJoke();
+  console.log(joke);
+  core.setOutput("joke-output", joke);
 }
 
-getJoke();
-
+run();
