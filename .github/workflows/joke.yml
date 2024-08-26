@@ -1,0 +1,12 @@
+name: Joke Action Workflow
+
+on: [push]
+
+jobs:
+  joke-job:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run Joke Action
+        uses: ./.github/actions/joke-action
+
